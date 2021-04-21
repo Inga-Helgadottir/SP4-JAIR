@@ -1,0 +1,4 @@
+ID,58,Name,team1,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
+ID,59,Name,team2,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
+ID,60,Name,team3,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
+ID,61,Name,team4,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0

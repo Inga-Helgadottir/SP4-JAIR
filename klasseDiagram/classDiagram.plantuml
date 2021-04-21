@@ -1,0 +1,156 @@
+@startuml SP3
+
+class Main{
+  final static UI ui = new UI();
+  static ArrayList<Tournament> tournaments = new ArrayList<Tournament>();
+  static boolean systemOn = true;
+
+  public static int readIdCounterData(String filePath);
+  public static void saveIdCounterData(String filePath, String data);
+  public static void deleteFolder(File file);
+  public static void saveData(String filePath, String data);
+  public static void createNewDir(String filePath, String dirName);
+  public static void showStartMenu();
+  public static void handleStartMenuChoice(String taskType);
+  public static void showTournamentMenu();
+  public static void handleTournamentChoice(String taskType);
+  public static void registerNewTeam();
+  public static void printTournamentData(File file);
+}
+
+class Tournament {
+  final static UI ui;
+  static final DateTimeFormatter myDateTimeFormat;
+  static final DateTimeFormatter myDateFormat;
+  static private int idCounter;
+
+  private int id;
+  private String name;
+  private String sport;
+  private String tournamentMode;
+  private LocalDateTime signUpDeadline;
+  private ArrayList<LocalDate> gameDates;
+  private ArrayList<Team> teams;
+  private ArrayList<Match> matches;
+
+  public static int getIdCounter();
+  public static void setIdCounter(int idCounterFromData);
+  public int getId();
+  public String getName();
+  public void setName(String name);
+  public String getSport();
+  public void setSport(String sport);
+  public String getTournamentMode();
+  public void setTournamentMode(String tournamentMode);
+  public LocalDateTime getSignUpDeadline();
+  public void setSignUpDeadline(LocalDateTime signUpDeadline);
+  public ArrayList<LocalDate> getGameDates();
+  public void addGameDates(String dateToAdd);
+  public ArrayList<Team> getTeams();
+  public void addTeam(Team team);
+  public static void readTournamentData(String filePath);
+  public static void readTournamentGameDateData(String filePath, Tournament tournament);
+  public static void readTournamentTeamData(String filePath, Tournament tournament);
+  public static void saveTournamentData(String filePath, String fileName, String data);
+  public static void registerNewTournament();
+  public static void displayAllTournaments();
+  public static Tournament findTournament(int id);
+  public static void displayTeamRankings(Tournament tournament);
+  public static ArrayList<LocalDate> showGameDates(Tournament tournament);
+  public static void deleteTournament();
+  public void randomTeamsToMatch();
+  public void saveMatchesToFile(Match data);
+  public String toString();
+}
+
+class Team{
+   static private int idCounter;
+   private int id;
+   private String name;
+   private ArrayList<String> players = new ArrayList<String>();
+   private boolean stillInTournament = true;
+   private int point;
+   private int goalsMade;
+   private int opposingTeamsGoals;
+
+   int getIdCounter();
+   void setIdCounter(int idCounterFromData);
+   int getPoint();
+   String getName();
+   int getGoalsMade();
+   int getOpposingTeamsGoals();
+   void setGoalsMade(int goals);
+   void setOpposingTeamsGoals(int goals);
+   void addPlayer(String playerName);
+   void joinTournament(Tournament tournamentToJoin);
+   String toString();
+}
+
+class Student{
+  protected int id;
+  protected String name;
+  protected String email;
+
+  public int getId();
+  public void setId(int id);
+  public String getName();
+  public void setName(String name);
+  public String getEmail();
+  public void setEmail(String email);
+  public String toString();
+}
+
+class Player extends Student{
+  public int getId();
+  public void setId(int id);
+  public String getName();
+  public void setName(String name);
+  public String getEmail();
+  public void setEmail(String email);
+  public String toString();
+}
+
+class Match{
+  Team[] teams;
+  Date gameDate;
+  int team1Goals;
+  int team2Goals;
+  String winner;
+
+  public Match(Team[] teams);
+  public void whoWon();
+  public void updateGoalsMade();
+  public void updateGoalsFile();
+  public Team[] getTeams();
+  public Date getGameDate();
+  public void setGameDate(Date gameDate);
+  public int getTeam1Goals();
+  public void setTeam1Goals(int team1Goals);
+  public int getTeam2Goals();
+  public void setTeam2Goals(int team2Goals);
+
+}
+
+class UI{
+  Scanner scanner = new Scanner(System.in);
+
+  public void displayMsg(String msg);
+  public String getUserInput(String msg);
+  public int getTeamInput();
+}
+
+Main "1" *-- "1" UI
+Tournament "many" *-- "many" Team
+Tournament "many" *-- "many" Match
+Team "1" *-- "2...*" Player
+Main "1" o-- "many" Tournament
+
+
+@enduml
+
+/'
+Class relationships:
+<|-- Extention
+*-- Composition
+o-- Aggregation
+'/

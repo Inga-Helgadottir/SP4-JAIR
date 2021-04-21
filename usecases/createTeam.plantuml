@@ -1,0 +1,8 @@
+@startuml SP3
+
+:TournamentLeader: --> (UI asks for infomation about tournaments)
+(UI asks for infomation about tournaments) --> (TournamentLeader gives information)
+(TournamentLeader gives information) --> (information is registered and saved to a config file)
+
+
+@enduml

@@ -1,0 +1,70 @@
+
+@startuml SP3
+
+class Main{
+  void createData();
+  void readData();
+  void saveData();
+}
+
+class Tournament {
+  ArrayList<Team> teams;
+  String sport;
+  String tournamentMode;
+  Date deadline;
+  ArrayList<Date> gameDates;
+  void addTeams();
+  void rankTeams();
+}
+
+class Team{
+  String teamName;
+  ArrayList<Student> players;
+  boolean stillPlaying;
+  int point;
+  int goalsMade;
+  int opposingTeamsGoals;
+}
+
+class Student{
+  int id;
+  String name;
+  String email;
+  String getName();
+  String getEmail();
+}
+
+class Player extends Student{
+}
+
+class Match{
+  Team[] teams;
+  Date gameDate;
+  int team1Goals;
+  int team2Goals;
+  void giveWinnerTeamPoints();
+  void updateGoalsMade(Team team);
+  void updateOpposingTeamsGoals(Team team);
+}
+
+class UI{
+  void createTournament();
+  void showTournamentStatus();
+}
+
+Main "1" *-- "1" UI
+Tournament "many" *-- "many" Team
+Tournament "many" *-- "many" Match
+Team "1" *-- "2...*" Player
+
+
+@enduml
+
+/'
+
+Class relationships:
+<|-- Extention
+*-- Composition
+o-- Aggregation
+
+'/

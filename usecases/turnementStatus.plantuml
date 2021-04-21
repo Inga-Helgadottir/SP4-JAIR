@@ -1,0 +1,8 @@
+@startuml SP3
+
+:User: --> (UI asks what tournament you want to see info for)
+(UI asks what tournament you want to see info for) --> (User picks a tournament)
+(User picks a tournament) --> (UI looks for config file)
+(UI looks for config file) --> (UI finds content from config file and shows it to the user)
+
+@enduml

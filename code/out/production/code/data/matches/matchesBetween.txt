@@ -1,0 +1,6 @@
+Match, teams=ID,66,Name,team3,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
+, gameDate=null, team1Goals=0, team2Goals=0, winner='null
+
+Match, teams=ID,65,Name,team2,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
+, gameDate=null, team1Goals=0, team2Goals=0, winner='null
+

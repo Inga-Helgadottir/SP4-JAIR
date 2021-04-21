@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2dbf621f-8f61-4331-afa2-41df8e069b0f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Slides/SP3-pp.odp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/com/company/Match.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/com/company/Match.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/com/company/Tournament.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/com/company/Tournament.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/idCounters/idCounter_Team.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/data/idCounters/idCounter_Team.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/idCounters/idCounter_Tournament.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/data/idCounters/idCounter_Tournament.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/matches/matchesBetween.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/data/matches/matchesBetween.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/tournaments/Whalefin Tournament/teamData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/data/tournaments/Whalefin Tournament/teamData.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/tournaments/aaaaaaaaaaaaaa/gameDateData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/tournaments/aaaaaaaaaaaaaa/teamData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/tournaments/aaaaaaaaaaaaaa/tournamentData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/tournaments/ffffff/gameDateData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/tournaments/ffffff/teamData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/tournaments/ffffff/tournamentData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Match.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Tournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Tournament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/idCounters/idCounter_Team.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/idCounters/idCounter_Team.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/idCounters/idCounter_Tournament.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/idCounters/idCounter_Tournament.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/matches/matchesBetween.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/matches/matchesBetween.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tournaments/Whalefin Tournament/teamData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/tournaments/Whalefin Tournament/teamData.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tournaments/aaaaaaaaaaaaaa/gameDateData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tournaments/aaaaaaaaaaaaaa/teamData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tournaments/aaaaaaaaaaaaaa/tournamentData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tournaments/ffffff/gameDateData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tournaments/ffffff/teamData.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/tournaments/ffffff/tournamentData.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1r76ERZW2o0gZu3nXcbxAlyTHJO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="untitled104" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="company" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <module name="code" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2dbf621f-8f61-4331-afa2-41df8e069b0f" name="Default Changelist" comment="" />
+      <created>1618314672348</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618314672348</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

@@ -1,0 +1,2 @@
+ID,55,Name,team1,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
+ID,56,Name,team2,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
