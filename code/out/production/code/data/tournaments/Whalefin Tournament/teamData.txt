@@ -2,4 +2,3 @@ ID,1,Name,TesterTeam,Still in tournament,true,Point,0,Goals made,0,Opposing team
 ID,2,Name,t12,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
 ID,57,Name,team1,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
 ID,62,Name,team1,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
-ID,63,Name,team1,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0
