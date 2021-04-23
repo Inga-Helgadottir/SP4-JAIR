@@ -81,12 +81,12 @@ public class Team {
    @Override
    public String toString() {
       return
-      "ID," + this.id + "," +
-      "Name," + this.name + "," +
+      "ID, " + this.id + ", " +
+      "Name, " + this.name + ", " +
 //      "Players," + players + "," +
-      "Still in tournament," + stillInTournament + "," +
-      "Point," + point + "," +
-      "Goals made," + goalsMade + "," +
-      "Opposing team's goals," + opposingTeamsGoals + "\n";
+      "Still in tournament, " + stillInTournament + ", " +
+      "Point, " + point + ", " +
+      "Goals made, " + goalsMade + ", " +
+      "Opposing team's goals, " + opposingTeamsGoals + "\n";
    }
 }
