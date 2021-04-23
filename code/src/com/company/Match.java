@@ -90,7 +90,9 @@ public class Match {
     @Override
     public String toString() {
         return "Match" +
-                ", teams, " + printTeamsArray() +
+                ", firstTeamInfo, " + teams[0] +
+                ", secondTeamInfo, " + teams[1] +
+                ", MatchInfo" +
                 ", gameDate, " + gameDate +
                 ", team1Goals, " + team1Goals +
                 ", team2Goals, " + team2Goals +
