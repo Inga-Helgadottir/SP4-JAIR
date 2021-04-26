@@ -14,15 +14,29 @@ public class Main {
 
     static ArrayList<Tournament> tournaments = new ArrayList<Tournament>();
     static boolean systemOn = true;
+    static boolean hasChosenDataSrc = false;
     static Tournament t = new Tournament("to", "sd", "sfd", "11-11-21 13:30");
 
-    public static void main(String[] args) throws IOException{
-        //Read all id counters and set to corresponding classes
-        Tournament.setIdCounter(readIdCounterData("src/data/idCounters/idCounter_Tournament.txt"));
-        Team.setIdCounter(readIdCounterData("src/data/idCounters/idCounter_Team.txt"));
 
-        //Read all tournament data
-        Tournament.readTournamentData("src/data/tournaments");
+    public static void main(String[] args) {
+
+        while(hasChosenDataSrc == false){
+            ui.displayMsg("(CHOOSE HOW YOU WOULD LIKE TO RUN THE SYSTEM)\n");
+            ui.displayMsg("- Through database (Type: 1)");
+            ui.displayMsg("- Locally (Type: 2)\n");
+            String userInput = ui.getUserInput("User input:");
+
+            if(userInput.equals("1") || userInput.equals("2")){
+                Controller.setDataSrc(userInput);
+                ui.displayMsg("");
+                hasChosenDataSrc = true;
+            }else{
+                ui.displayMsg("Invalid input...\n");
+            }
+        }
+
+        // Load all system data
+        Controller.loadData();
 
         ui.displayMsg("~ Tournament Manager ~");
 
@@ -34,37 +48,6 @@ public class Main {
             showStartMenu();
             taskType = ui.getUserInput("\nUser input:");
             handleStartMenuChoice(taskType);
-        }
-    }
-
-    public static int readIdCounterData(String filePath){
-        String[] idCounterLine;
-        int idCounter = 0;
-
-        try{
-            File file = new File(filePath);
-            Scanner scanner = new Scanner(file);
-            String line = scanner.nextLine();
-            idCounterLine = line.split(":");
-            idCounter = Integer.parseInt(idCounterLine[1]);
-            scanner.close();
-        }catch(FileNotFoundException e){
-            System.out.println(e);
-        }
-
-        return idCounter;
-    }
-
-    public static void saveIdCounterData(String filePath, String data){
-        String fileData = data;
-
-        try{
-            File file = new File(filePath);
-            FileWriter fileWriter = new FileWriter(file, false);
-            fileWriter.write(data);
-            fileWriter.close();
-        }catch (IOException e){
-            System.out.println(e.getCause());
         }
     }
 
@@ -82,24 +65,6 @@ public class Main {
         }
     }
 
-    public static void saveData(String filePath, String data){
-        String fileData = data;
-
-        try{
-            File file = new File(filePath);
-            FileWriter fileWriter = new FileWriter(file, true);
-            fileWriter.write(data);
-            fileWriter.close();
-        }catch (IOException e){
-            System.out.println(e.getCause());
-        }
-    }
-
-    public static void createNewDir(String filePath, String dirName){
-        File newDir = new File(filePath + "/" + dirName);
-        newDir.mkdir();
-    }
-
     public static void showStartMenu(){
         ui.displayMsg("\n(START-MENU)");
 
@@ -115,7 +80,7 @@ public class Main {
         if(taskType.equals("1")){
             showTournamentMenu();
         }else if(taskType.equals("2")){
-            registerNewTeam();
+            Team.registerNewTeam();
         }else if(taskType.equals("3")){
             System.out.println("See data");
             showDataMenu();
@@ -182,66 +147,6 @@ public class Main {
             return;
         }else{
             ui.displayMsg("Invalid input");
-        }
-    }
-
-    public static void registerNewTeam(){
-        ui.displayMsg("\n(REGISTER NEW TEAM)");
-
-        if(Main.tournaments.size() != 0){
-            ui.displayMsg("\nTournaments currently in the system: ");
-            Tournament.displayAllTournaments();
-
-            String userInput = ui.getUserInput("\nType the ID of the tournament the team would like to register " +
-                    "into \nType -1 to cancel: ");
-
-            if(!userInput.equals("-1")){
-                int tournamentId = Integer.parseInt(userInput);
-
-                Tournament tournamentToRegisterInto = Tournament.findTournament(tournamentId);
-
-                if(tournamentToRegisterInto != null){
-                    String teamName = ui.getUserInput("\nTeam name:");
-
-                    ui.displayMsg("\nA team must have at least 2 players to get registered");
-                    ui.displayMsg("Please enter 2 or more players to complete registration");
-                    ui.displayMsg("Type -1 to end");
-
-                    ArrayList<String> playerNames = new ArrayList<String>();
-                    boolean stillAdding = true;
-
-                    while(stillAdding){
-                        String playerName = ui.getUserInput("\nPlayer name: ");
-
-                        if(!playerName.equals("-1")){
-                            playerNames.add(playerName);
-                        }else{
-                            stillAdding = false;
-                        }
-                    }
-
-                    if(playerNames.size() == 0){
-                        ui.displayMsg("You need at least 2 players to register into the tournament");
-                        ui.displayMsg("\nThe team was not registered...");
-                    }else{
-                        Team team = new Team(teamName);
-                        tournamentToRegisterInto.addTeam(team);
-
-                        for(String playerName : playerNames){
-                            team.addPlayer(playerName);
-                        }
-
-                        saveIdCounterData("src/data/idCounters/idCounter_Team.txt", "ID:" + Team.getIdCounter());
-                        saveData("src/data/tournaments/" + tournamentToRegisterInto.getName() + "/teamData.txt",
-                                team.toString());
-                        ui.displayMsg("\nThe team was successfully registered!");
-                    }
-                }else{
-                    ui.displayMsg("\nNo tournament matching the provided id could be found in the system...");
-                }
-            }
-        }else{
-            ui.displayMsg("There are currently no tournaments registered in the system.");
         }
     }
 

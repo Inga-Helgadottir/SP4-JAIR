@@ -1,1 +1,0 @@
-ID,38,Name,hjkl,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0

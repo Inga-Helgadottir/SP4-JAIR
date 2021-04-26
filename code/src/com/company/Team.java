@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Team {
+   final private static UI ui = new UI();
    static private int idCounter;
 
    private int id;
@@ -68,6 +69,66 @@ public class Team {
       players.add(playerName);
    }
 
+   public static void registerNewTeam(){
+      ui.displayMsg("\n(REGISTER NEW TEAM)");
+
+      if(Main.tournaments.size() != 0){
+         ui.displayMsg("\nTournaments currently in the system: ");
+         Tournament.displayAllTournaments();
+
+         String userInput = ui.getUserInput("\nType the ID of the tournament the team would like to register " +
+         "into \nType -1 to cancel: ");
+
+         if(!userInput.equals("-1")){
+            int tournamentId = Integer.parseInt(userInput);
+
+            Tournament tournamentToRegisterInto = Tournament.findTournament(tournamentId);
+
+            if(tournamentToRegisterInto != null){
+               String teamName = ui.getUserInput("\nTeam name:");
+
+               ui.displayMsg("\nA team must have at least 2 players to get registered");
+               ui.displayMsg("Please enter 2 or more players to complete registration");
+               ui.displayMsg("Type -1 to end");
+
+               ArrayList<String> playerNames = new ArrayList<String>();
+               boolean stillAdding = true;
+
+               while(stillAdding){
+                  String playerName = ui.getUserInput("\nPlayer name: ");
+
+                  if(!playerName.equals("-1")){
+                     playerNames.add(playerName);
+                  }else{
+                     stillAdding = false;
+                  }
+               }
+
+               if(playerNames.size() == 0){
+                  ui.displayMsg("You need at least 2 players to register into the tournament");
+                  ui.displayMsg("\nThe team was not registered...");
+               }else{
+                  Team team = new Team(teamName);
+                  tournamentToRegisterInto.addTeam(team);
+
+                  for(String playerName : playerNames){
+                     team.addPlayer(playerName);
+                  }
+
+                  FileHandler.saveData("src/data/idCounters/idCounter_Team.txt", "ID:" + Team.getIdCounter(), false);
+                  FileHandler.saveData("src/data/tournaments/" + tournamentToRegisterInto.getName() + "/teamData.txt",
+                  team.toString(), true);
+                  ui.displayMsg("\nThe team was successfully registered!");
+               }
+            }else{
+               ui.displayMsg("\nNo tournament matching the provided id could be found in the system...");
+            }
+         }
+      }else{
+         ui.displayMsg("There are currently no tournaments registered in the system.");
+      }
+   }
+
    public void joinTournament(Tournament tournamentToJoin){
       tournamentToJoin.addTeam(this);
    }
@@ -81,12 +142,11 @@ public class Team {
    @Override
    public String toString() {
       return
-      "ID, " + this.id + ", " +
-      "Name, " + this.name + ", " +
-//      "Players," + players + "," +
-      "Still in tournament, " + stillInTournament + ", " +
-      "Point, " + point + ", " +
-      "Goals made, " + goalsMade + ", " +
-      "Opposing team's goals, " + opposingTeamsGoals + "\n";
+      "ID," + this.id + "," +
+      "Name," + this.name + "," +
+      "Still in tournament," + stillInTournament + "," +
+      "Point," + point + "," +
+      "Goals made," + goalsMade + "," +
+      "Opposing team's goals," + opposingTeamsGoals + "\n";
    }
 }

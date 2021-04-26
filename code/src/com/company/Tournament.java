@@ -112,138 +112,7 @@ public class Tournament {
 // ***************** Getter and Setter-ish END *******************
 
 
-// *********************** Other methods *************************
-
-   public void displayTeamRankings(){
-      ArrayList<Team> rankings = new ArrayList<Team>();
-
-      for(Team team : teams){
-         rankings.add(team);
-      }
-
-//      Team teamWithHighestPoint = rankings.get(0);
-//
-//      for(int i = 0; i < rankings.size(); i++){
-//         for(int j = 1; j < (rankings.size() - i); j++){
-//            if(rankings.get(j-1).getPoint() > rankings.get(j).getPoint()){
-//               //swap elements
-//               teamWithHighestPoint = rankings.get(j-1);
-//               rankings.add(j-1, rankings.get(j));
-//               rankings.add(j, teamWithHighestPoint);
-//            }
-//
-//         }
-//      }
-
-      int rankCounter = 1;
-
-      for(Team team : rankings){
-         System.out.println(rankCounter + ") " + team.getName() + ": " + team.getPoint() + " points");
-         rankCounter++;
-      }
-   }
-
-// ********************* Other methods END ***********************
-
-
 // ********************** Static methods *************************
-
-   public static void readTournamentData(String filePath){
-      try{
-         File tournamentsDir = new File(filePath);
-         String tournamentsDirContent[] = tournamentsDir.list();
-
-         for(int i = 0; i<tournamentsDirContent.length; i++) {
-            File tournamentData = new File(filePath + "/" + tournamentsDirContent[i] + "/tournamentData.txt");
-            Scanner scanner = new Scanner(tournamentData);
-            String[] tournamentLine;
-
-            while(scanner.hasNextLine()) {
-               String line = scanner.nextLine();
-               tournamentLine = line.split(",");
-
-               int id = Integer.parseInt(tournamentLine[1]);
-               String name = tournamentLine[3];
-               String sport = tournamentLine[5];
-               String tournamentMode = tournamentLine[7];
-               String signUpDeadline = tournamentLine[9];
-
-               Main.tournaments.add(new Tournament(id, name, sport, tournamentMode, signUpDeadline));
-
-               // Adds dateAndTimes data to the corresponding tournament
-               readTournamentGameDateData(filePath, Main.tournaments.get(i));
-               readTournamentTeamData(filePath, Main.tournaments.get(i));
-            }
-            scanner.close();
-         }
-      }catch(IOException e){
-         System.out.println(e);
-      }
-   }
-
-   public static void readTournamentGameDateData(String filePath, Tournament tournament){
-      try{
-         File tournamentsDir = new File(filePath);
-
-         File gameDateData = new File(filePath + "/" + tournament.getName() + "/gameDateData.txt");
-         Scanner scanner = new Scanner(gameDateData);
-         String[] gameDateLines;
-
-         while(scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            gameDateLines = line.split(",");
-
-            for(String gameDateLine : gameDateLines){
-               tournament.addGameDates(gameDateLine);
-            }
-         }
-         scanner.close();
-      }catch(IOException e){
-         System.out.println(e);
-      }
-   }
-
-   public static void readTournamentTeamData(String filePath, Tournament tournament){
-      try{
-         File tournamentsDir = new File(filePath);
-
-         File teamData = new File(filePath + "/" + tournament.getName() + "/teamData.txt");
-         Scanner scanner = new Scanner(teamData);
-         String[] teamLines;
-
-         while(scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            teamLines = line.split(",");
-
-            int id = Integer.parseInt(teamLines[1]);
-            String name = teamLines[3];
-            boolean stillInTournament = Boolean.parseBoolean(teamLines[5]);
-            int point = Integer.parseInt(teamLines[7]);
-            int goalsMade = Integer.parseInt(teamLines[9]);
-            int opposingTeamsGoals = Integer.parseInt(teamLines[11]);
-
-            tournament.teams.add(new Team(id, name, stillInTournament, point, goalsMade, opposingTeamsGoals));
-         }
-         scanner.close();
-      }catch(IOException e){
-         System.out.println(e);
-      }
-   }
-
-   public static void saveTournamentData(String filePath, String fileName, String data){
-      String fileData = data;
-
-      try{
-         Main.createNewDir(filePath, fileName);
-
-         File file = new File(filePath + "/" + fileName + "/tournamentData.txt");
-         FileWriter fileWriter = new FileWriter(file, false);
-         fileWriter.write(data);
-         fileWriter.close();
-      }catch (IOException e){
-         System.out.println(e.getCause());
-      }
-   }
 
    public static void registerNewTournament(){
       ui.displayMsg("\n(REGISTER NEW TOURNAMENT)");
@@ -255,12 +124,10 @@ public class Tournament {
 
       Tournament tournament = new Tournament(name, sport, mode, signUpDeadline);
       Main.tournaments.add(tournament);
-      ui.displayMsg("\nNew tournament has been registered!");
 
-      Main.saveIdCounterData("src/data/idCounters/idCounter_Tournament.txt", "ID:" + Tournament.getIdCounter());
-      saveTournamentData("src/data/tournaments", name, tournament.toString());
-      Main.saveData("src/data/tournaments/" + name + "/gameDateData.txt", "");
-      Main.saveData("src/data/tournaments/" + name + "/teamData.txt", "");
+      Controller.saveTournamentData(tournament);
+
+      ui.displayMsg("\nNew tournament has been registered!");
 
       String willAddDateAndTimesNow = ui.getUserInput("\nWould you like to add game dates now? (y/n):").toLowerCase();
 
@@ -279,7 +146,8 @@ public class Tournament {
                return;
             }else{
                tournament.addGameDates(date);
-               Main.saveData("src/data/tournaments/" + name + "/gameDateData.txt", date + "\n");
+
+               Controller.saveGameDateData(tournament, date);
             }
          }
       }
