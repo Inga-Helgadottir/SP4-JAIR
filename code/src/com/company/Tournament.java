@@ -219,8 +219,7 @@ public class Tournament {
             Tournament tournamentToBeDeleted = findTournament(tournamentId);
 
             if(tournamentToBeDeleted != null){
-               File fileToBeDeleted = new File("src/data/tournaments/" + tournamentToBeDeleted.getName());
-               Main.deleteFolder(fileToBeDeleted);
+               Controller.deleteTournamentData(tournamentToBeDeleted);
 
                Main.tournaments.remove(findTournament(tournamentId));
 

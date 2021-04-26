@@ -55,6 +55,16 @@ public class Controller {
       io.saveGameDateData(path, tournament, date);
    }
 
+   public static void saveTeamData(Team team, Tournament tournament){
+      io = getIO();
+      io.saveTeamData(path, team, tournament);
+   }
+
+   public static void deleteTournamentData(Tournament tournament){
+      io = getIO();
+      io.deleteTournamentData(path, tournament);
+   }
+
    public static void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner) {
       io = getIO();
       io.updateGoals(teams, team1Goals, team2Goals, winner);

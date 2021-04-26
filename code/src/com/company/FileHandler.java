@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 public class FileHandler implements IO{
@@ -42,6 +43,34 @@ public class FileHandler implements IO{
    public static void createNewDir(String filePath){
       File newDir = new File(filePath);
       newDir.mkdir();
+   }
+
+   public static void deleteFolder(File file){
+      try{
+         File[] allContents = file.listFiles();
+         if (allContents != null) {
+            for (File content : allContents) {
+               deleteFolder(content);
+            }
+         }
+         Files.delete(file.toPath());
+      }catch(IOException e){
+         System.out.println(e);
+      }
+   }
+
+   public static void printTournamentData(File file){
+      Scanner input = null;
+      try {
+         input = new Scanner(file);
+
+         while (input.hasNextLine())
+         {
+            System.out.println(input.nextLine());
+         }
+      } catch (FileNotFoundException e) {
+         e.printStackTrace();
+      }
    }
 
    @Override
@@ -148,6 +177,20 @@ public class FileHandler implements IO{
       true);
    }
 
+   @Override
+   public void saveTeamData(String path, Team team, Tournament tournament){
+      saveData(path + "/idCounters/idCounter_Team.txt", "ID:" + Team.getIdCounter(), false);
+      saveData(path + "/tournaments/" + tournament.getName() + "/teamData.txt",
+      team.toString(), true);
+   }
+
+   @Override
+   public void deleteTournamentData(String filePath, Tournament tournament){
+      File fileToBeDeleted = new File(filePath + "/tournaments/" + tournament.getName());
+      deleteFolder(fileToBeDeleted);
+   }
+
+   @Override
    public void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner) {
       System.out.println();
       try{
@@ -156,12 +199,13 @@ public class FileHandler implements IO{
          String data = "team1, " + teams[0].getName() + ", team1goals, " + team1Goals + ", team2, " + teams[1].getName() + ", team2goals, " + team2Goals + ", Winner, " + winner + ",\n";
          fr.write(data);
          fr.close();
-         Main.printTournamentData(file);
+         printTournamentData(file);
       }catch (IOException e){
          System.out.println(e.getCause());
       }
    }
 
+   @Override
    public void saveMatches(Match data){
       try{
          File file = new File("src/data/matches/matchesBetween.txt");
@@ -169,7 +213,7 @@ public class FileHandler implements IO{
          String myData = data.toString() + "\n";
          fr.write(myData);
          fr.close();
-         Main.printTournamentData(file);
+         printTournamentData(file);
       }catch (IOException e){
          System.out.println(e.getCause());
       }

@@ -61,19 +61,19 @@ public class Main {
         }
     }
 
-    public static void deleteFolder(File file){
-        try{
-            File[] allContents = file.listFiles();
-            if (allContents != null) {
-                for (File content : allContents) {
-                    deleteFolder(content);
-                }
-            }
-            Files.delete(file.toPath());
-        }catch(IOException e){
-            System.out.println(e);
-        }
-    }
+//    public static void deleteFolder(File file){
+//        try{
+//            File[] allContents = file.listFiles();
+//            if (allContents != null) {
+//                for (File content : allContents) {
+//                    deleteFolder(content);
+//                }
+//            }
+//            Files.delete(file.toPath());
+//        }catch(IOException e){
+//            System.out.println(e);
+//        }
+//    }
 
     public static void showStartMenu(){
         ui.displayMsg("\n(START-MENU)");
@@ -160,19 +160,19 @@ public class Main {
         }
     }
 
-    public static void printTournamentData(File file){
-        Scanner input = null;
-        try {
-            input = new Scanner(file);
-
-            while (input.hasNextLine())
-            {
-                System.out.println(input.nextLine());
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void printTournamentData(File file){
+//        Scanner input = null;
+//        try {
+//            input = new Scanner(file);
+//
+//            while (input.hasNextLine())
+//            {
+//                System.out.println(input.nextLine());
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public static void showDataMenu()
     {
