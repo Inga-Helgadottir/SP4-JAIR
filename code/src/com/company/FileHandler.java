@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class FileHandler implements IO{
+   static Tournament t = new Tournament("to", "sd", "sfd", "11-11-21 13:30");
 
    public static int readIdCounterData(String filePath){
       String[] idCounterLine;
@@ -172,6 +173,33 @@ public class FileHandler implements IO{
          Main.printTournamentData(file);
       }catch (IOException e){
          System.out.println(e.getCause());
+      }
+   }
+
+   @Override
+   public void showMatchMenu(String matchType) {
+      int tournamentId = Integer.parseInt(matchType);
+      Tournament matchTournament = Tournament.findTournament(tournamentId);
+      if(matchTournament != null){
+         File setTournamentToMatches = new File("src/data/tournaments/" + matchTournament.getName() + "/teamData.txt");
+         Scanner scanner = null;
+         try {
+            scanner = new Scanner(setTournamentToMatches);
+         } catch (FileNotFoundException e) {
+            e.printStackTrace();
+         }
+         if (scanner != null) {
+            while (scanner.hasNextLine()) {
+               String[] lines = scanner.nextLine().split(",");
+               String name = lines[3];
+               Team team1 = new Team(name);
+               t.addTeam(team1);
+            }
+            t.randomTeamsToMatch();
+            System.out.println("The teams in your tournament have been sent to matches");
+         }
+      }else{
+         System.out.println("There is no tournament with that id");
       }
    }
 
