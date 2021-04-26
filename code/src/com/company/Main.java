@@ -32,6 +32,7 @@ public class Main {
                 hasChosenDataSrc = true;
             }else{
 //                ui.displayMsg("Invalid input...\n");
+                //todo do remove test code below
                 Controller.setDataSrc("2");
                 ui.displayMsg("");
                 hasChosenDataSrc = true;
