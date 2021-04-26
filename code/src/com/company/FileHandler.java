@@ -8,7 +8,6 @@ import java.nio.file.Files;
 import java.util.Scanner;
 
 public class FileHandler implements IO{
-   static Tournament t = new Tournament("to", "sd", "sfd", "11-11-21 13:30");
 
    public static int readIdCounterData(String filePath){
       String[] idCounterLine;
@@ -222,6 +221,8 @@ public class FileHandler implements IO{
 
    @Override
    public void showMatchMenu(String matchType) {
+      Tournament t = new Tournament("to", "sd", "sfd", "11-11-21 13:30");
+      
       int tournamentId = Integer.parseInt(matchType);
       Tournament matchTournament = Tournament.findTournament(tournamentId);
       if(matchTournament != null){
