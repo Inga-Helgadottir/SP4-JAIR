@@ -75,4 +75,9 @@ public class Controller {
       io.saveMatches(data);
    }
 
+   public static void showMatchMenu(String matchType){
+      io = getIO();
+      io.showMatchMenu(matchType);
+   }
+
 }

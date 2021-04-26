@@ -107,29 +107,7 @@ public class Main {
     }
 
     public static void showMatchMenu(String matchType){
-        int tournamentId = Integer.parseInt(matchType);
-        Tournament matchTournament = Tournament.findTournament(tournamentId);
-        if(matchTournament != null){
-            File setTournamentToMatches = new File("src/data/tournaments/" + matchTournament.getName() + "/teamData.txt");
-            Scanner scanner = null;
-            try {
-                scanner = new Scanner(setTournamentToMatches);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            if (scanner != null) {
-                while (scanner.hasNextLine()) {
-                    String[] lines = scanner.nextLine().split(",");
-                    String name = lines[3];
-                    Team team1 = new Team(name);
-                    t.addTeam(team1);
-                }
-                t.randomTeamsToMatch();
-                System.out.println("The teams in your tournament have been sent to matches");
-            }
-        }else{
-            System.out.println("There is no tournament with that id");
-        }
+        Controller.showMatchMenu(matchType);
     }
 
     public static void showTournamentMenu(){

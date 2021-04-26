@@ -16,4 +16,5 @@ public interface IO {
    public void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner);
 
    public void saveMatches(Match data);
+   public void showMatchMenu(String matchType);
 }
