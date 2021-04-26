@@ -265,16 +265,7 @@ public class Tournament {
    }
 
    public void saveMatchesToFile(Match data){
-      try{
-         File file = new File("src/data/matches/matchesBetween.txt");
-         FileWriter fr = new FileWriter(file, true);
-         String myData = data.toString() + "\n";
-         fr.write(myData);
-         fr.close();
-         Main.printTournamentData(file);
-      }catch (IOException e){
-         System.out.println(e.getCause());
-      }
+      Controller.saveMatches(data);
    }
 
    @Override

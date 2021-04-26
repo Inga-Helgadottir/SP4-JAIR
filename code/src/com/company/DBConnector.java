@@ -35,4 +35,14 @@ public class DBConnector implements IO {
 
    }
 
+   @Override
+   public void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner) {
+
+   }
+
+   public void saveMatches(Match data){
+
+   }
+
+
 }

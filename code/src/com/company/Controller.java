@@ -55,4 +55,14 @@ public class Controller {
       io.saveGameDateData(path, tournament, date);
    }
 
+   public static void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner) {
+      io = getIO();
+      io.updateGoals(teams, team1Goals, team2Goals, winner);
+   }
+
+   public static void saveMatches(Match data){
+      io = getIO();
+      io.saveMatches(data);
+   }
+
 }

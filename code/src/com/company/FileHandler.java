@@ -148,4 +148,31 @@ public class FileHandler implements IO{
       true);
    }
 
+   public void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner) {
+      System.out.println();
+      try{
+         File file = new File("src/data/matches/matchWinnerData.txt");
+         FileWriter fr = new FileWriter(file, true);
+         String data = "team1, " + teams[0].getName() + ", team1goals, " + team1Goals + ", team2, " + teams[1].getName() + ", team2goals, " + team2Goals + ", Winner, " + winner + ",\n";
+         fr.write(data);
+         fr.close();
+         Main.printTournamentData(file);
+      }catch (IOException e){
+         System.out.println(e.getCause());
+      }
+   }
+
+   public void saveMatches(Match data){
+      try{
+         File file = new File("src/data/matches/matchesBetween.txt");
+         FileWriter fr = new FileWriter(file, true);
+         String myData = data.toString() + "\n";
+         fr.write(myData);
+         fr.close();
+         Main.printTournamentData(file);
+      }catch (IOException e){
+         System.out.println(e.getCause());
+      }
+   }
+
 }

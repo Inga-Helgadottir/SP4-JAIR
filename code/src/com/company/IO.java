@@ -9,4 +9,8 @@ public interface IO {
 
    public void saveTournamentData(String path, Tournament tournament);
    public void saveGameDateData(String path, Tournament tournament, String date);
+
+   public void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner);
+
+   public void saveMatches(Match data);
 }

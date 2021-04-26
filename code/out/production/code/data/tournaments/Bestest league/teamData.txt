@@ -1,0 +1,1 @@
+ID,64,Name,A-people,Still in tournament,true,Point,0,Goals made,0,Opposing team's goals,0

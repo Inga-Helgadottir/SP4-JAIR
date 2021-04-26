@@ -1,0 +1,8 @@
+Match, firstTeamInfo, ID, 65, Name, t12, Still in tournament, true, Point, 0, Goals made, 0, Opposing team's goals, 0
+, secondTeamInfo, ID, 67, Name, team1, Still in tournament, true, Point, 0, Goals made, 0, Opposing team's goals, 0
+, MatchInfo, gameDate, null, team1Goals, 0, team2Goals, 0, winner, 'null
+
+Match, firstTeamInfo, ID, 64, Name, TesterTeam, Still in tournament, true, Point, 0, Goals made, 0, Opposing team's goals, 0
+, secondTeamInfo, ID, 66, Name, team1, Still in tournament, true, Point, 0, Goals made, 0, Opposing team's goals, 0
+, MatchInfo, gameDate, null, team1Goals, 0, team2Goals, 0, winner, 'null
+

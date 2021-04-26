@@ -1,1 +1,0 @@
-ID,28,Name,ATournament,Sport,soccer,Tournament mode,knock-out,SignUp deadline,11-11-22 13:00

@@ -31,7 +31,17 @@ public class Main {
                 ui.displayMsg("");
                 hasChosenDataSrc = true;
             }else{
-                ui.displayMsg("Invalid input...\n");
+//                ui.displayMsg("Invalid input...\n");
+                Controller.setDataSrc("2");
+                ui.displayMsg("");
+                hasChosenDataSrc = true;
+                Team team1 = new Team("team1");
+                Team team2 = new Team("team2");
+                Team[] teams = {team1, team2};
+                Match m = new Match(teams);
+                m.setTeam1Goals(5);
+                m.setTeam2Goals(6);
+                m.updateGoalsMade();
             }
         }
 
