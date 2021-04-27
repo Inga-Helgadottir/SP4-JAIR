@@ -8,8 +8,9 @@ public interface IO {
    public void readTeamData(String path, Tournament tournament);
 
    public void saveTournamentData(String path, Tournament tournament);
-   public void saveGameDateData(String path, Tournament tournament, String date);
+   public void saveGameDateData(String path, Tournament tournament);
    public void saveTeamData(String path, Team team, Tournament tournament);
+   public void savePlayerData(String path, Team team);
 
    public void deleteTournamentData(String path, Tournament tournament);
 

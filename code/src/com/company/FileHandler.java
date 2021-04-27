@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class FileHandler implements IO{
@@ -172,9 +173,13 @@ public class FileHandler implements IO{
    }
 
    @Override
-   public void saveGameDateData(String filePath, Tournament tournament, String date){
-      FileHandler.saveData(filePath + "/tournaments/" + tournament.getName() + "/gameDateData.txt", date + "\n",
-      true);
+   public void saveGameDateData(String filePath, Tournament tournament){
+      for(LocalDate date : tournament.getGameDates()){
+         String dateAsString = date.format(Tournament.myDateFormat);
+
+         FileHandler.saveData(filePath + "/tournaments/" + tournament.getName() + "/gameDateData.txt",
+         dateAsString + "\n", true);
+      }
    }
 
    @Override
@@ -246,6 +251,11 @@ public class FileHandler implements IO{
       }else{
          System.out.println("There is no tournament with that id");
       }
+   }
+
+   @Override
+   public void savePlayerData(String path, Team team){
+
    }
 
 }

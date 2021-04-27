@@ -141,15 +141,15 @@ public class Tournament {
             String date = ui.getUserInput("Date (dd-MM-yy): ");
 
             if(date.equals("-1")){
-               ui.displayMsg("\nAll game dates has now been saved");
                stillAdding = false;
-               return;
+               break;
             }else{
                tournament.addGameDates(date);
-
-               Controller.saveGameDateData(tournament, date);
             }
          }
+
+         Controller.saveGameDateData(tournament);
+         ui.displayMsg("\nAll game dates has now been saved");
       }
    }
 

@@ -50,14 +50,19 @@ public class Controller {
       io.saveTournamentData(path, tournament);
    }
 
-   public static void saveGameDateData(Tournament tournament, String date){
+   public static void saveGameDateData(Tournament tournament){
       io = getIO();
-      io.saveGameDateData(path, tournament, date);
+      io.saveGameDateData(path, tournament);
    }
 
    public static void saveTeamData(Team team, Tournament tournament){
       io = getIO();
       io.saveTeamData(path, team, tournament);
+   }
+
+   public static void savePlayerData(Team team){
+      io = getIO();
+      io.savePlayerData(path, team);
    }
 
    public static void deleteTournamentData(Tournament tournament){

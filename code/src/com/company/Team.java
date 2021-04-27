@@ -31,6 +31,9 @@ public class Team {
       this.opposingTeamsGoals = opposingTeamsGoals;
    }
 
+   public int getId(){
+      return id;
+   }
 
    public static int getIdCounter(){
       return idCounter;
@@ -40,6 +43,9 @@ public class Team {
       idCounter = idCounterFromData;
    }
 
+   public ArrayList<String> getPlayers(){
+      return players;
+   }
 
    public int getPoint(){
       return this.point;
@@ -115,9 +121,8 @@ public class Team {
                      team.addPlayer(playerName);
                   }
 
-                  FileHandler.saveData("src/data/idCounters/idCounter_Team.txt", "ID:" + Team.getIdCounter(), false);
-                  FileHandler.saveData("src/data/tournaments/" + tournamentToRegisterInto.getName() + "/teamData.txt",
-                  team.toString(), true);
+                  Controller.saveTeamData(team, tournamentToRegisterInto);
+                  Controller.savePlayerData(team);
                   ui.displayMsg("\nThe team was successfully registered!");
                }
             }else{
