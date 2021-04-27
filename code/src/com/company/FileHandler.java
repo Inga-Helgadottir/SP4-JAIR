@@ -75,6 +75,18 @@ public class FileHandler implements IO{
    }
 
    @Override
+   public void setTournamentIdCounterData(String filePath){
+      int currentIdCounter = readIdCounterData(filePath + "/idCounters/idCounter_Tournament.txt");
+      Tournament.setIdCounter(currentIdCounter);
+   }
+
+   @Override
+   public void setTeamIdCounterData(String filePath){
+      int currentIdCounter = readIdCounterData(filePath + "/idCounters/idCounter_Team.txt");
+      Team.setIdCounter(currentIdCounter);
+   }
+
+   @Override
    public void readTournamentData(String filePath){
       try{
          File tournamentsDir = new File(filePath + "/tournaments");
