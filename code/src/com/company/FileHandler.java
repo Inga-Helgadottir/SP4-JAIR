@@ -160,6 +160,11 @@ public class FileHandler implements IO{
    }
 
    @Override
+   public void readPlayerData(String path, Team team){
+
+   }
+
+   @Override
    public void saveTournamentData(String filePath, Tournament tournament){
       saveData(filePath + "/idCounters/idCounter_Tournament.txt", "ID:" + Tournament.getIdCounter(), false);
       createNewDir(filePath + "/tournaments/" + tournament.getName());
@@ -187,6 +192,11 @@ public class FileHandler implements IO{
       saveData(path + "/idCounters/idCounter_Team.txt", "ID:" + Team.getIdCounter(), false);
       saveData(path + "/tournaments/" + tournament.getName() + "/teamData.txt",
       team.toString(), true);
+   }
+
+   @Override
+   public void savePlayerData(String path, Team team){
+
    }
 
    @Override
@@ -251,11 +261,6 @@ public class FileHandler implements IO{
       }else{
          System.out.println("There is no tournament with that id");
       }
-   }
-
-   @Override
-   public void savePlayerData(String path, Team team){
-
    }
 
 }

@@ -138,7 +138,7 @@ public class Tournament {
          boolean stillAdding = true;
 
          while(stillAdding){
-            String date = ui.getUserInput("Date (dd-MM-yy): ");
+            String date = ui.getUserInput("Date (dd-MM-yy):");
 
             if(date.equals("-1")){
                stillAdding = false;
@@ -149,6 +149,7 @@ public class Tournament {
          }
 
          Controller.saveGameDateData(tournament);
+
          ui.displayMsg("\nAll game dates has now been saved");
       }
    }

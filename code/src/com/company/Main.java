@@ -51,10 +51,6 @@ public class Main {
 
         ui.displayMsg("\n~ Tournament Manager ~");
 
-        Tournament dummyTournament = new Tournament("Dummy tournament", "Dummy sport", "Dummy mode",
-        "01-04-21 12:12");
-        Main.tournaments.add(dummyTournament); // *******************************************
-
         showStartMenu();
         String taskType = ui.getUserInput("\nUser input:");
         handleStartMenuChoice(taskType);

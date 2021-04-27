@@ -14,14 +14,14 @@ public class Team {
    private int goalsMade = 0;
    private int opposingTeamsGoals = 0;
 
-   // For tournaments created by user
+   // For team created by user
    public Team(String name) {
       this.id = idCounter;
       this.name = name;
       idCounter++;
    }
 
-   // For tournaments created from data
+   // For team created from data
    public Team(int id, String name, boolean stillInTournament, int point, int goalsMade, int opposingTeamsGoals) {
       this.id = id;
       this.name = name;
@@ -123,6 +123,7 @@ public class Team {
 
                   Controller.saveTeamData(team, tournamentToRegisterInto);
                   Controller.savePlayerData(team);
+
                   ui.displayMsg("\nThe team was successfully registered!");
                }
             }else{
