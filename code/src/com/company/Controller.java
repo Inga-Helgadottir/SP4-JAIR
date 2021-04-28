@@ -22,16 +22,6 @@ public class Controller {
       }
    }
 
-   public static void loadData(){
-      io = getIO();
-      io.readTournamentData(path);
-
-      if(io instanceof FileHandler){
-         Tournament.setIdCounter(FileHandler.readIdCounterData(path + "/idCounters/idCounter_Tournament.txt"));
-         Team.setIdCounter(FileHandler.readIdCounterData(path + "/idCounters/idCounter_Team.txt"));
-      }
-   }
-
    public static IO getIO() {
       IO io = null;
 
@@ -43,6 +33,13 @@ public class Controller {
          io = new FileHandler();
       }
       return io;
+   }
+
+   public static void loadData(){
+      io = getIO();
+      io.setTournamentIdCounterData(path);
+      io.setTeamIdCounterData(path);
+      io.readTournamentData(path);
    }
 
    public static void saveTournamentData(Tournament tournament){
