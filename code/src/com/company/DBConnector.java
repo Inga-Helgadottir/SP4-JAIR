@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DBConnector implements IO {
-/*-----------------CHANGE PASSWORD IN LINE 21-----------------------------------------------------------*/
+   /*-----------------CHANGE PASSWORD IN LINE 21-----------------------------------------------------------*/
    final DateTimeFormatter dBDateTimeFormat = DateTimeFormatter.ofPattern("YYYY-MM-dd hh:mm:ss");
    final DateTimeFormatter dBDateFormat = DateTimeFormatter.ofPattern("YYYY-MM-dd");
    final DateTimeFormatter systemDateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm");
@@ -36,13 +36,13 @@ public class DBConnector implements IO {
          conn = this.connection;
 
          String sql1 =
-         "SET @@SESSION.information_schema_stats_expiry = 0";
+                 "SET @@SESSION.information_schema_stats_expiry = 0";
 
          String sql2 =
-         "SELECT AUTO_INCREMENT\n" +
-         "FROM  INFORMATION_SCHEMA.TABLES\n" +
-         "WHERE TABLE_SCHEMA = 'tournament_manager'\n" +
-         "AND   TABLE_NAME   = 'tournaments'";
+                 "SELECT AUTO_INCREMENT\n" +
+                         "FROM  INFORMATION_SCHEMA.TABLES\n" +
+                         "WHERE TABLE_SCHEMA = 'tournament_manager'\n" +
+                         "AND   TABLE_NAME   = 'tournaments'";
 
          PreparedStatement pstmt = conn.prepareStatement(sql1);
          PreparedStatement pstmt2 = conn.prepareStatement(sql2);
@@ -80,13 +80,13 @@ public class DBConnector implements IO {
          conn = this.connection;
 
          String sql1 =
-         "SET @@SESSION.information_schema_stats_expiry = 0";
+                 "SET @@SESSION.information_schema_stats_expiry = 0";
 
          String sql2 =
-         "SELECT AUTO_INCREMENT\n" +
-         "FROM  INFORMATION_SCHEMA.TABLES\n" +
-         "WHERE TABLE_SCHEMA = 'tournament_manager'\n" +
-         "AND   TABLE_NAME   = 'teams'";
+                 "SELECT AUTO_INCREMENT\n" +
+                         "FROM  INFORMATION_SCHEMA.TABLES\n" +
+                         "WHERE TABLE_SCHEMA = 'tournament_manager'\n" +
+                         "AND   TABLE_NAME   = 'teams'";
 
          PreparedStatement pstmt = conn.prepareStatement(sql1);
          PreparedStatement pstmt2 = conn.prepareStatement(sql2);
@@ -150,10 +150,10 @@ public class DBConnector implements IO {
          DBBasicMethodSqlImplement();
 
          String sql =
-         "SELECT tournaments.id, game_dates.game_date\n" +
-         "FROM ((tournament_game_dates\n" +
-         "INNER JOIN tournaments ON tournament_game_dates.fk_tournament_id = tournaments.id)\n" +
-         "INNER JOIN game_dates ON tournament_game_dates.fk_game_date_id = game_dates.id)";
+                 "SELECT tournaments.id, game_dates.game_date\n" +
+                         "FROM ((tournament_game_dates\n" +
+                         "INNER JOIN tournaments ON tournament_game_dates.fk_tournament_id = tournaments.id)\n" +
+                         "INNER JOIN game_dates ON tournament_game_dates.fk_game_date_id = game_dates.id)";
 
          pstmt = this.connection.prepareStatement(sql);
          ResultSet rs = pstmt.executeQuery();
@@ -184,10 +184,10 @@ public class DBConnector implements IO {
          DBBasicMethodSqlImplement();
 
          String sql =
-         "SELECT teams.id, teams.team_name, teams.still_in_tournament, teams.points, " +
-         "teams.goals_made, teams.goals_let_through, tournaments.id AS 'tournament_id'\n" +
-         "FROM teams\n" +
-         "INNER JOIN tournaments ON teams.fk_tournament_id = tournaments.id;";
+                 "SELECT teams.id, teams.team_name, teams.still_in_tournament, teams.points, " +
+                         "teams.goals_made, teams.goals_let_through, tournaments.id AS 'tournament_id'\n" +
+                         "FROM teams\n" +
+                         "INNER JOIN tournaments ON teams.fk_tournament_id = tournaments.id;";
 
          pstmt = this.connection.prepareStatement(sql);
          ResultSet rs = pstmt.executeQuery();
@@ -225,9 +225,9 @@ public class DBConnector implements IO {
          DBBasicMethodSqlImplement();
 
          String sql =
-         "SELECT players.player_name, teams.id AS 'team_id'\n" +
-         "FROM players\n" +
-         "INNER JOIN teams ON players.fk_team_id = teams.id;";
+                 "SELECT players.player_name, teams.id AS 'team_id'\n" +
+                         "FROM players\n" +
+                         "INNER JOIN teams ON players.fk_team_id = teams.id;";
 
          pstmt = this.connection.prepareStatement(sql);
          ResultSet rs = pstmt.executeQuery();
@@ -262,8 +262,8 @@ public class DBConnector implements IO {
          conn = this.connection;
 
          String sql =
-         "INSERT INTO tournaments(tournament_name, sport, tournament_mode, sign_up_deadline)\n" +
-         "VALUES(?, ?, ?, CAST(? AS DATETIME))";
+                 "INSERT INTO tournaments(tournament_name, sport, tournament_mode, sign_up_deadline)\n" +
+                         "VALUES(?, ?, ?, CAST(? AS DATETIME))";
 
          PreparedStatement pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 
@@ -296,14 +296,14 @@ public class DBConnector implements IO {
          conn = this.connection;
 
          String sql1 =
-         "INSERT INTO game_dates (game_date)\n" +
-         "SELECT CAST(? AS DATE) WHERE NOT EXISTS (SELECT * FROM game_dates WHERE game_date = ?)";
+                 "INSERT INTO game_dates (game_date)\n" +
+                         "SELECT CAST(? AS DATE) WHERE NOT EXISTS (SELECT * FROM game_dates WHERE game_date = ?)";
 
          String sql2 =
-         "INSERT INTO tournament_game_dates (fk_tournament_id, fk_game_date_id)\n" +
-         "SELECT tournaments.id, game_dates.id\n" +
-         "FROM tournaments, game_dates\n" +
-         "WHERE tournaments.id = ? AND game_dates.game_date = ?";
+                 "INSERT INTO tournament_game_dates (fk_tournament_id, fk_game_date_id)\n" +
+                         "SELECT tournaments.id, game_dates.id\n" +
+                         "FROM tournaments, game_dates\n" +
+                         "WHERE tournaments.id = ? AND game_dates.game_date = ?";
 
          PreparedStatement pstmt1 = conn.prepareStatement(sql1,Statement.RETURN_GENERATED_KEYS);
          PreparedStatement pstmt2 = conn.prepareStatement(sql2,Statement.RETURN_GENERATED_KEYS);
@@ -342,8 +342,8 @@ public class DBConnector implements IO {
          conn = this.connection;
 
          String sql =
-         "INSERT INTO teams(team_name, fk_tournament_id)\n" +
-         "VALUES(?, ?)";
+                 "INSERT INTO teams(team_name, fk_tournament_id)\n" +
+                         "VALUES(?, ?)";
 
          PreparedStatement pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 
@@ -373,8 +373,8 @@ public class DBConnector implements IO {
          conn = this.connection;
 
          String sql =
-         "INSERT INTO players (player_name, fk_team_id)\n" +
-         "VALUES (?, ?)";
+                 "INSERT INTO players (player_name, fk_team_id)\n" +
+                         "VALUES (?, ?)";
 
          PreparedStatement pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 
@@ -423,29 +423,6 @@ public class DBConnector implements IO {
             System.out.println(e.getMessage());
          }
       }
-      /*
-         Connection conn = null;
-      try
-      {
-         DBBasicMethodSqlImplement();
-         conn = this.connection;
-
-         String sql = "DELETE FROM teams WHERE id=?";
-         PreparedStatement pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-
-         pstmt.setInt(2, team.getId());
-
-         pstmt = this.connection.prepareStatement(sql);
-         ResultSet rs = pstmt.executeQuery();
-
-         while (rs.next())
-            rs.close();
-      }
-
-      catch (SQLException throwables)
-      {
-         throwables.printStackTrace();
-      }*/
    }
 
    @Override

@@ -8,46 +8,46 @@ import java.nio.file.Files;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class FileHandler implements IO{
+public class FileHandler implements IO {
 
-   public static int readIdCounterData(String filePath){
+   public static int readIdCounterData(String filePath) {
       String[] idCounterLine;
       int idCounter = 0;
 
-      try{
+      try {
          File file = new File(filePath);
          Scanner scanner = new Scanner(file);
          String line = scanner.nextLine();
          idCounterLine = line.split(":");
          idCounter = Integer.parseInt(idCounterLine[1]);
          scanner.close();
-      }catch(FileNotFoundException e){
+      } catch (FileNotFoundException e) {
          System.out.println(e);
       }
 
       return idCounter;
    }
 
-   public static void saveData(String filePath, String data, boolean willAppend){
+   public static void saveData(String filePath, String data, boolean willAppend) {
       String fileData = data;
 
-      try{
+      try {
          File file = new File(filePath);
          FileWriter fileWriter = new FileWriter(file, willAppend);
          fileWriter.write(data);
          fileWriter.close();
-      }catch (IOException e){
+      } catch (IOException e) {
          System.out.println(e.getCause());
       }
    }
 
-   public static void createNewDir(String filePath){
+   public static void createNewDir(String filePath) {
       File newDir = new File(filePath);
       newDir.mkdir();
    }
 
-   public static void deleteFolder(File file){
-      try{
+   public static void deleteFolder(File file) {
+      try {
          File[] allContents = file.listFiles();
          if (allContents != null) {
             for (File content : allContents) {
@@ -55,18 +55,17 @@ public class FileHandler implements IO{
             }
          }
          Files.delete(file.toPath());
-      }catch(IOException e){
+      } catch (IOException e) {
          System.out.println(e);
       }
    }
 
-   public static void printTournamentData(File file){
+   public static void printTournamentData(File file) {
       Scanner input = null;
       try {
          input = new Scanner(file);
 
-         while (input.hasNextLine())
-         {
+         while (input.hasNextLine()) {
             System.out.println(input.nextLine());
          }
       } catch (FileNotFoundException e) {
@@ -75,29 +74,29 @@ public class FileHandler implements IO{
    }
 
    @Override
-   public void setTournamentIdCounterData(String filePath){
+   public void setTournamentIdCounterData(String filePath) {
       int currentIdCounter = readIdCounterData(filePath + "/idCounters/idCounter_Tournament.txt");
       Tournament.setIdCounter(currentIdCounter);
    }
 
    @Override
-   public void setTeamIdCounterData(String filePath){
+   public void setTeamIdCounterData(String filePath) {
       int currentIdCounter = readIdCounterData(filePath + "/idCounters/idCounter_Team.txt");
       Team.setIdCounter(currentIdCounter);
    }
 
    @Override
-   public void readTournamentData(String filePath){
-      try{
+   public void readTournamentData(String filePath) {
+      try {
          File tournamentsDir = new File(filePath + "/tournaments");
          String tournamentsDirContent[] = tournamentsDir.list();
 
-         for(int i = 0; i<tournamentsDirContent.length; i++) {
+         for (int i = 0; i < tournamentsDirContent.length; i++) {
             File tournamentData = new File(filePath + "/tournaments/" + tournamentsDirContent[i] + "/tournamentData.txt");
             Scanner scanner = new Scanner(tournamentData);
             String[] tournamentLine;
 
-            while(scanner.hasNextLine()) {
+            while (scanner.hasNextLine()) {
                String line = scanner.nextLine();
                tournamentLine = line.split(",");
 
@@ -115,44 +114,44 @@ public class FileHandler implements IO{
             }
             scanner.close();
          }
-      }catch(IOException e){
+      } catch (IOException e) {
          System.out.println(e);
       }
    }
 
    @Override
-   public void readGameDateData(String filePath, Tournament tournament){
-      try{
+   public void readGameDateData(String filePath, Tournament tournament) {
+      try {
          File tournamentsDir = new File(filePath);
 
          File gameDateData = new File(filePath + "/tournaments/" + tournament.getName() + "/gameDateData.txt");
          Scanner scanner = new Scanner(gameDateData);
          String[] gameDateLines;
 
-         while(scanner.hasNextLine()) {
+         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             gameDateLines = line.split(",");
 
-            for(String gameDateLine : gameDateLines){
+            for (String gameDateLine : gameDateLines) {
                tournament.addGameDates(gameDateLine);
             }
          }
          scanner.close();
-      }catch(IOException e){
+      } catch (IOException e) {
          System.out.println(e);
       }
    }
 
    @Override
-   public void readTeamData(String filePath, Tournament tournament){
-      try{
+   public void readTeamData(String filePath, Tournament tournament) {
+      try {
          File tournamentsDir = new File(filePath);
 
          File teamData = new File(filePath + "/tournaments/" + tournament.getName() + "/teamData.txt");
          Scanner scanner = new Scanner(teamData);
          String[] teamLines;
 
-         while(scanner.hasNextLine()) {
+         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             teamLines = line.split(",");
 
@@ -166,22 +165,22 @@ public class FileHandler implements IO{
             tournament.addTeam(new Team(id, name, stillInTournament, point, goalsMade, opposingTeamsGoals));
          }
          scanner.close();
-      }catch(IOException e){
+      } catch (IOException e) {
          System.out.println(e);
       }
    }
 
    @Override
-   public void readPlayerData(String path, Team team){
+   public void readPlayerData(String path, Team team) {
 
    }
 
    @Override
-   public void saveTournamentData(String filePath, Tournament tournament){
+   public void saveTournamentData(String filePath, Tournament tournament) {
       saveData(filePath + "/idCounters/idCounter_Tournament.txt", "ID:" + Tournament.getIdCounter(), false);
       createNewDir(filePath + "/tournaments/" + tournament.getName());
       saveData(filePath + "/tournaments/" + tournament.getName() + "/tournamentData.txt", tournament.toString(),
-      true);
+              true);
 
       //createDirAndTournamentDataFile(filePath + "/tournaments/", tournament.getName(), tournament.toString());
       saveData(filePath + "/tournaments/" + tournament.getName() + "/gameDateData.txt", "", true);
@@ -190,29 +189,29 @@ public class FileHandler implements IO{
    }
 
    @Override
-   public void saveGameDateData(String filePath, Tournament tournament){
-      for(LocalDate date : tournament.getGameDates()){
+   public void saveGameDateData(String filePath, Tournament tournament) {
+      for (LocalDate date : tournament.getGameDates()) {
          String dateAsString = date.format(Tournament.myDateFormat);
 
          FileHandler.saveData(filePath + "/tournaments/" + tournament.getName() + "/gameDateData.txt",
-         dateAsString + "\n", true);
+                 dateAsString + "\n", true);
       }
    }
 
    @Override
-   public void saveTeamData(String path, Team team, Tournament tournament){
+   public void saveTeamData(String path, Team team, Tournament tournament) {
       saveData(path + "/idCounters/idCounter_Team.txt", "ID:" + Team.getIdCounter(), false);
       saveData(path + "/tournaments/" + tournament.getName() + "/teamData.txt",
-      team.toString(), true);
+              team.toString(), true);
    }
 
    @Override
-   public void savePlayerData(String path, Team team){
+   public void savePlayerData(String path, Team team) {
 
    }
 
    @Override
-   public void deleteTournamentData(String filePath, Tournament tournament){
+   public void deleteTournamentData(String filePath, Tournament tournament) {
       File fileToBeDeleted = new File(filePath + "/tournaments/" + tournament.getName());
       deleteFolder(fileToBeDeleted);
    }
@@ -220,28 +219,28 @@ public class FileHandler implements IO{
    @Override
    public void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner) {
       System.out.println();
-      try{
+      try {
          File file = new File("src/data/matches/matchWinnerData.txt");
          FileWriter fr = new FileWriter(file, true);
          String data = "team1, " + teams[0].getName() + ", team1goals, " + team1Goals + ", team2, " + teams[1].getName() + ", team2goals, " + team2Goals + ", Winner, " + winner + ",\n";
          fr.write(data);
          fr.close();
          printTournamentData(file);
-      }catch (IOException e){
+      } catch (IOException e) {
          System.out.println(e.getCause());
       }
    }
 
    @Override
-   public void saveMatches(Match data){
-      try{
+   public void saveMatches(Match data) {
+      try {
          File file = new File("src/data/matches/matchesBetween.txt");
          FileWriter fr = new FileWriter(file, true);
          String myData = data.toString() + "\n";
          fr.write(myData);
          fr.close();
          printTournamentData(file);
-      }catch (IOException e){
+      } catch (IOException e) {
          System.out.println(e.getCause());
       }
    }
@@ -252,7 +251,7 @@ public class FileHandler implements IO{
 
       int tournamentId = Integer.parseInt(matchType);
       Tournament matchTournament = Tournament.findTournament(tournamentId);
-      if(matchTournament != null){
+      if (matchTournament != null) {
          File setTournamentToMatches = new File("src/data/tournaments/" + matchTournament.getName() + "/teamData.txt");
          Scanner scanner = null;
          try {
@@ -270,9 +269,8 @@ public class FileHandler implements IO{
             t.randomTeamsToMatch();
             System.out.println("The teams in your tournament have been sent to matches");
          }
-      }else{
+      } else {
          System.out.println("There is no tournament with that id");
       }
    }
-
 }
