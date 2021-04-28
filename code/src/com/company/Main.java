@@ -83,10 +83,6 @@ public class Main {
         }
     }
 
-    public static void matchResult(){
-
-    }
-
     public static void showMatchMenu(String matchType){
         Controller.showMatchMenu(matchType);
     }
