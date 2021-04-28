@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DBConnector implements IO {
-
+/*-----------------CHANGE PASSWORD IN LINE 21-----------------------------------------------------------*/
    final DateTimeFormatter dBDateTimeFormat = DateTimeFormatter.ofPattern("YYYY-MM-dd hh:mm:ss");
    final DateTimeFormatter dBDateFormat = DateTimeFormatter.ofPattern("YYYY-MM-dd");
    final DateTimeFormatter systemDateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm");
@@ -413,7 +413,12 @@ public class DBConnector implements IO {
 
    @Override
    public void showMatchMenu(String matchType) {
-
+      readTournamentData("path");
+      for (int i = 0; i < Main.tournaments.size(); i++) {
+         int tourId = Main.tournaments.get(i).getId();
+         if(tourId == Integer.parseInt(matchType)){
+            Main.tournaments.get(i).randomTeamsToMatch();
+         }
+      }
    }
-
 }
