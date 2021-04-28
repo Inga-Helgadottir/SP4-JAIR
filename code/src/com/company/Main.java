@@ -31,18 +31,20 @@ public class Main {
                 ui.displayMsg("");
                 hasChosenDataSrc = true;
             }else{
-//                ui.displayMsg("Invalid input...\n");
+                ui.displayMsg("Invalid input...\n");
                 //todo do remove test code below
-                Controller.setDataSrc("2");
-                ui.displayMsg("");
-                hasChosenDataSrc = true;
-                Team team1 = new Team("team1");
-                Team team2 = new Team("team2");
-                Team[] teams = {team1, team2};
-                Match m = new Match(teams);
-                m.setTeam1Goals(5);
-                m.setTeam2Goals(6);
-                m.updateGoalsMade();
+//                Controller.setDataSrc("1");
+//                ui.displayMsg("");
+//                hasChosenDataSrc = true;
+//                showMatchMenu("1");
+//                Team team1 = new Team(1, "aaaaaaa", true, 23, 5, 6);
+//                Team team2 = new Team(2, "bbbbbbb", true, 22, 6, 5);
+//                //int id, String name, boolean stillInTournament, int point, int goalsMade, int opposingTeamsGoals
+//                Team[] teams = {team1, team2};
+//                Match m = new Match(teams);
+//                m.setTeam1Goals(5);
+//                m.setTeam2Goals(6);
+//                m.updateGoalsMade();
             }
         }
 

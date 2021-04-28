@@ -1,2 +1,4 @@
 team1, team1, team1goals, 5, team2, team2, team2goals, 6, Winner, null,
 team1, team1, team1goals, 5, team2, team2, team2goals, 6, Winner, null,
+team1, team1, team1goals, 5, team2, team2, team2goals, 6, Winner, team2,
+team1, t1, team1goals, 5, team2, t2, team2goals, 6, Winner, null,

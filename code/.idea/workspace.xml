@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2dbf621f-8f61-4331-afa2-41df8e069b0f" name="Default Changelist" comment="" />
+    <list default="true" id="2dbf621f-8f61-4331-afa2-41df8e069b0f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/code.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/com/company/DBConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/com/company/DBConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/com/company/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/matches/matchWinnerData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/data/matches/matchWinnerData.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/data/matches/matchesBetween.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/data/matches/matchesBetween.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/DBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/matches/matchWinnerData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/matches/matchWinnerData.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,10 +84,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Programming/IntelliJ Dependencies/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../cph-projects/intellij/uge16/justForFun/toDoList" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
