@@ -18,7 +18,7 @@ public class DBConnector implements IO {
 
    public void DBBasicMethodSqlImplement() {
       try {
-         this.connection = DriverManager.getConnection("jdbc:mysql://localhost/tournament_manager", "root", "kisshu25");
+         this.connection = DriverManager.getConnection("jdbc:mysql://localhost/tournament_manager", "root", "Password");
       }
       catch (SQLException throwables) {
          throwables.printStackTrace();
@@ -403,7 +403,39 @@ public class DBConnector implements IO {
 
    @Override
    public void updateGoals(Team[] teams, int team1Goals, int team2Goals, String winner) {
+      Connection conn = null;
+      ResultSet rs = null;
+      boolean firstTeamDone = false;
+      try{
+         DBBasicMethodSqlImplement();
+         conn = this.connection;
 
+         String sql =
+                 "INSERT INTO team_matches (fk_team_id, goals)\n" +
+                         "VALUES (?, ?)";
+
+         PreparedStatement pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+
+         for (int i = 0; i < teams.length; i++) {
+            pstmt.setInt(1, teams[i].getId());
+            if(i == 0){
+               pstmt.setInt(2, team1Goals);
+            }else{
+               pstmt.setInt(2, team2Goals);
+            }
+            pstmt.addBatch();
+         }
+
+         pstmt.executeBatch();
+      }catch (SQLException ex) {
+         System.out.println(ex.getMessage());
+      } finally {
+         try {
+            if(rs != null)  rs.close();
+         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+         }
+      }
    }
 
    @Override
