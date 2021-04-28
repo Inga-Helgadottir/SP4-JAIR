@@ -397,8 +397,55 @@ public class DBConnector implements IO {
    }
 
    @Override
-   public void deleteTournamentData(String path, Tournament tournament) {
+   public void deleteTournamentData(String path, Tournament tournament)
+   {
+      Connection conn = null;
+      ResultSet rs = null;
 
+      try{
+         DBBasicMethodSqlImplement();
+         conn = this.connection;
+
+         String sql = "DELETE FROM teams WHERE id=?";
+
+         PreparedStatement pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+
+         pstmt.setInt(1, tournament.getId());
+
+         pstmt.addBatch();
+         pstmt.executeBatch();
+      }catch (SQLException ex) {
+         System.out.println(ex.getMessage());
+      } finally {
+         try {
+            if(rs != null)  rs.close();
+         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+         }
+      }
+      /*
+         Connection conn = null;
+      try
+      {
+         DBBasicMethodSqlImplement();
+         conn = this.connection;
+
+         String sql = "DELETE FROM teams WHERE id=?";
+         PreparedStatement pstmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+
+         pstmt.setInt(2, team.getId());
+
+         pstmt = this.connection.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery();
+
+         while (rs.next())
+            rs.close();
+      }
+
+      catch (SQLException throwables)
+      {
+         throwables.printStackTrace();
+      }*/
    }
 
    @Override
